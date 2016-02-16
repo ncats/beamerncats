@@ -1,0 +1,152 @@
+\documentclass{beamer}
+
+\mode<presentation> {
+   \usetheme{Boadilla}
+}
+
+% Set widescreen presentation
+\usepackage[orientation=landscape,size=custom,width=16,height=10,scale=0.5,debug]{beamerposter} 
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{ragged2e}
+\usepackage[normalem]{ulem}
+
+% Set special footers for mainpage and body content
+\defbeamertemplate*{footline}{NCATS Style}
+{
+    \ifnum \insertpagenumber=1
+        \includegraphics[height=28pt]{images/ncats-footline-title.jpeg}
+    \else
+        \includegraphics[height=30pt]{images/ncats-footline.jpeg}
+    \fi
+}
+
+% Set itemize element to be a black square
+\setbeamertemplate{itemize item}{\color{black}$\blacksquare$}
+
+% Set title page fonts color
+\setbeamercolor{title}{fg=white} 
+\setbeamercolor{author}{fg=white} 
+\setbeamercolor{institute}{fg=white}
+\setbeamercolor{date}{fg=white}
+% Set title page fonts size
+\usefonttheme{structurebold}
+    \setbeamerfont{title}{series=\bfseries,parent=structure}
+    \setbeamerfont{subtitle}{size=\scriptsize,series=\bfseries,parent=structure}
+    \setbeamerfont{author}{size=\large,series=\bfseries,parent=structure}
+    \setbeamerfont{institute}{size=\small,series=\bfseries,parent=structure}
+    \setbeamerfont{date}{size=\scriptsize,series=\bfseries,parent=structure}
+
+% Set properly ToC
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsection}
+\setbeamertemplate{subsection in toc}[square]
+\setbeamercolor{subsection in sidebar shaded}{fg=black}
+% Section
+\AtBeginSection[] { 
+  \begin{frame}
+    \frametitle{Overview} 
+    \tableofcontents[currentsection] 
+  \end{frame} 
+  \addtocounter{framenumber}{-1} 
+} 
+% Subsection
+\AtBeginSubsection[] { 
+  \begin{frame}
+   \frametitle{Overview} 
+    \tableofcontents[currentsubsection] 
+    \addtocounter{framenumber}{-1} 
+  \end{frame} 
+}
+
+% Set mainpage then body slides with special footer image
+\setbeamertemplate{footline}[NCATS Style]
+
+% Title page
+\title[NCATS Linux Team]{\textbf{Your Fancy Title}}
+
+\author{\textbf{Juan del Pueblo}}
+\institute[NCATS]
+{
+\textbf{Your Team} \\
+\medskip
+\textit{\textbf{(username@mail.nih.gov)}}
+}
+\date{\today}
+
+% Begin slides
+\begin{document}
+\usebackgroundtemplate{\includegraphics[height=261pt,width=455pt]{images/ncats-mainpage.jpeg}}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+% Reset background template
+\usebackgroundtemplate{}
+
+\justifying
+
+% Slides body
+\section{Section 1}
+\begin{frame} 
+\frametitle{\textbf{Section 1}}
+\justifying
+Put your text here....
+\\~\\
+\invisible<1>{ 
+\begin{block}{\textbf{...an example...}}
+\justifying
+\color{blue}{
+Another text here...}
+\end{block} 
+}
+\pause  
+\end{frame}
+
+% New slide
+
+\section{Section 2}
+
+\subsection{A Subsection}
+\begin{frame}
+\frametitle{\textbf{A Subsection}}
+Check content
+\end{frame}
+
+% New slide
+
+\subsection{Another Subsection}
+\begin{frame}
+\frametitle{\textbf{Another Subsection}}
+\setbeamercolor{normal text}{fg=gray,bg=}
+\setbeamercolor{alerted text}{fg=blue,bg=}
+\usebeamercolor{normal text}
+\begin{itemize}
+\justifying
+\item<1-> \alert<+>{Item One \\ $\rightarrow$ extended description...}
+\item<2-> \alert<+>{Item Two \\  $\rightarrow$ blah blah blah}
+\end{itemize}
+\end{frame}
+
+% New slide
+
+\subsection{Another Subsection}
+\begin{frame}
+\frametitle{\textbf{Another Subsection}}
+\center{
+Include a graph
+%\framebox{\includegraphics[scale=0.6]{images/yourfile}}
+}
+\end{frame}
+
+% New slide
+
+\begin{frame}
+\frametitle{\textbf{Questions?}}
+\large{\centerline{\textbf{\color{red}{\uline{ncatsunix@mail.nih.gov}}}}}
+\end{frame}
+
+% End document
+
+\end{document}
